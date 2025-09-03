@@ -8,15 +8,15 @@ class CreateCoursesTable extends Migration
 {
     public function up()
     {
-        $this->forge->addField([
+         $this->forge->addField([
             'id' => [
-                'type'           => 'INT',
-                'constraint'     => 5,
-                'unsigned'       => true,
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
                 'auto_increment' => true,
             ],
             'title' => [
-                'type'       => 'VARCHAR',
+                'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
             'description' => [
@@ -24,28 +24,9 @@ class CreateCoursesTable extends Migration
                 'null' => true,
             ],
             'instructor_id' => [
-                'type'       => 'INT',
+                'type' => 'INT',
                 'constraint' => 5,
-                'unsigned'   => true,
-            ],
-            'category' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100',
-                'null'       => true,
-            ],
-            'difficulty_level' => [
-                'type'       => 'ENUM',
-                'constraint' => ['beginner', 'intermediate', 'advanced'],
-                'default'    => 'beginner',
-            ],
-            'duration_hours' => [
-                'type'       => 'INT',
-                'constraint' => 5,
-                'null'       => true,
-            ],
-            'is_active' => [
-                'type'    => 'BOOLEAN',
-                'default' => true,
+                'unsigned' => true,
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -63,6 +44,6 @@ class CreateCoursesTable extends Migration
 
     public function down()
     {
-        $this->forge->dropTable('courses');
+          $this->forge->dropTable('courses');
     }
 }

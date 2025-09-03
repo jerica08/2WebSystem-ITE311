@@ -8,48 +8,21 @@ class CreateQuizzesTable extends Migration
 {
     public function up()
     {
-        $this->forge->addField([
+         $this->forge->addField([
             'id' => [
-                'type'           => 'INT',
-                'constraint'     => 5,
-                'unsigned'       => true,
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'lesson_id' => [
-                'type'       => 'INT',
-                'constraint' => 5,
-                'unsigned'   => true,
-            ],
             'title' => [
-                'type'       => 'VARCHAR',
+                'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'description' => [
-                'type' => 'TEXT',
-                'null' => true,
-            ],
-            'questions' => [
-                'type' => 'JSON',
-                'null' => true,
-            ],
-            'time_limit_minutes' => [
-                'type'       => 'INT',
+            'lesson_id' => [
+                'type' => 'INT',
                 'constraint' => 5,
-                'null'       => true,
-            ],
-            'max_attempts' => [
-                'type'       => 'INT',
-                'constraint' => 3,
-                'default'    => 1,
-            ],
-            'passing_score' => [
-                'type'       => 'DECIMAL',
-                'constraint' => '5,2',
-                'default'    => 70.00,
-            ],
-            'is_active' => [
-                'type'    => 'BOOLEAN',
-                'default' => true,
+                'unsigned' => true,
             ],
             'created_at' => [
                 'type' => 'DATETIME',

@@ -10,62 +10,29 @@ class CreateSubmissionsTable extends Migration
     {
         $this->forge->addField([
             'id' => [
-                'type'           => 'INT',
-                'constraint'     => 5,
-                'unsigned'       => true,
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'quiz_id' => [
-                'type'       => 'INT',
-                'constraint' => 5,
-                'unsigned'   => true,
-            ],
             'user_id' => [
-                'type'       => 'INT',
+                'type' => 'INT',
                 'constraint' => 5,
-                'unsigned'   => true,
+                'unsigned' => true,
             ],
-            'answers' => [
-                'type' => 'JSON',
-                'null' => true,
+            'quiz_id' => [
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
             ],
             'score' => [
-                'type'       => 'DECIMAL',
-                'constraint' => '5,2',
-                'null'       => true,
-            ],
-            'max_score' => [
-                'type'       => 'DECIMAL',
-                'constraint' => '5,2',
-                'null'       => true,
-            ],
-            'percentage' => [
-                'type'       => 'DECIMAL',
-                'constraint' => '5,2',
-                'null'       => true,
-            ],
-            'attempt_number' => [
-                'type'       => 'INT',
+                'type' => 'INT',
                 'constraint' => 3,
-                'default'    => 1,
+                'unsigned' => true,
             ],
-            'started_at' => [
+            'submission_date' => [
                 'type' => 'DATETIME',
                 'null' => true,
-            ],
-            'submitted_at' => [
-                'type' => 'DATETIME',
-                'null' => true,
-            ],
-            'time_taken_minutes' => [
-                'type'       => 'INT',
-                'constraint' => 5,
-                'null'       => true,
-            ],
-            'status' => [
-                'type'       => 'ENUM',
-                'constraint' => ['in_progress', 'submitted', 'graded'],
-                'default'    => 'in_progress',
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -77,13 +44,13 @@ class CreateSubmissionsTable extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('quiz_id', 'quizzes', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('quiz_id', 'quizzes', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('submissions');
     }
 
     public function down()
     {
-        $this->forge->dropTable('submissions');
+         $this->forge->dropTable('submissions');
     }
 }
